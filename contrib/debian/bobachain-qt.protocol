@@ -1,0 +1,11 @@
+[Protocol]
+exec=bobachain-qt '%u'
+protocol=bobachain
+input=none
+output=none
+helper=true
+listing=
+reading=false
+writing=false
+makedir=false
+deleting=false

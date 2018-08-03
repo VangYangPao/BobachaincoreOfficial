@@ -1,0 +1,3 @@
+debian/manpages/bobachaind.1
+debian/manpages/bobachain.conf.5
+debian/manpages/bobachain-cli.1

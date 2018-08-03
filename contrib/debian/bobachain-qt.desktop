@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Bobachain
+Comment=Bobachain P2P Cryptocurrency
+Comment[fr]=Bobachain, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Bobachain, eşten eşe kriptografik sanal para birimi
+Exec=bobachain-qt %u
+Terminal=false
+Type=Application
+Icon=bobachain128
+MimeType=x-scheme-handler/bobachain;
+Categories=Office;Finance;

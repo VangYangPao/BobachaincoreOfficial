@@ -1,0 +1,22 @@
+[Unit]
+Description=Bobachain's distributed currency daemon
+After=network.target
+
+[Service]
+User=bobachaincode
+Group=bobachaincore
+
+Type=forking
+PIDFile=/var/lib/bobachaind/bobachaind.pid
+ExecStart=/usr/bin/bobachaind -daemon -pid=/var/lib/bobachaind/bobachaind.pid \
+-conf=/etc/bobachaincore/bobachain.conf -datadir=/var/lib/bobachaind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

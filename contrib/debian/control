@@ -1,0 +1,68 @@
+Source: bobachain
+Section: utils
+Priority: optional
+Maintainer: Bobachain Dev <dev@bobachain.io>
+Uploaders: Bobachain Dev <dev@bobachain.io>
+Build-Depends: debhelper,
+ devscripts,
+ automake,
+ libtool,
+ bash-completion,
+ libdb4.8++-dev,
+ libssl-dev,
+ pkg-config,
+ libevent-dev,
+ libboost-system1.48-dev | libboost-system-dev (>> 1.35),
+ libboost-filesystem1.48-dev | libboost-filesystem-dev (>> 1.35),
+ libboost-program-options1.48-dev | libboost-program-options-dev (>> 1.35),
+ libboost-thread1.48-dev | libboost-thread-dev (>> 1.35),
+ libboost-test1.48-dev | libboost-test-dev (>> 1.35),
+ libboost-chrono1.48-dev | libboost-chrono-dev (>> 1.35),
+ qt4-qmake,
+ libqt4-dev,
+ libqrencode-dev,
+ libprotobuf-dev, protobuf-compiler,
+ python
+Standards-Version: 3.9.2
+Homepage: https://bobachain.io/
+Vcs-Git: git://github.com/bobachain/bobachain-core.git
+Vcs-Browser: https://github.com/bobachain-dev/bobachain-core
+
+Package: bobachaind
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer network based digital currency - daemon
+ Bobachain is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Bobachain uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. Bobachain Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides the daemon, bobachaind, and the CLI tool
+ bobachain-cli to interact with the daemon.
+
+Package: bobachain-qt
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer network based digital currency - Qt GUI
+ Bobachain is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Bobachain uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. Bobachain Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides Bobachain-Qt, a GUI for Bobachain based on Qt.
+
+Package: bobachain-tx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: peer-to-peer digital currency - standalone transaction tool
+ Bobachain is an experimental new digital currency that enables anonymous, instant
+ payments to anyone, anywhere in the world. Bobachain uses peer-to-peer
+ technology to operate with no central authority: managing transactions
+ and issuing money are carried out collectively by the network. Bobachain Core
+ is the name of the open source software which enables the use of this currency.
+ .
+ This package provides bobachain-tx, a command-line transaction creation
+ tool which can be used without a bobachain daemon.  Some means of
+ exchanging minimal transaction data with peers is still required.

@@ -1,0 +1,6 @@
+usr/local/bin/bobachain-qt usr/bin
+share/pixmaps/bobachain32.xpm usr/share/pixmaps
+share/pixmaps/bobachain16.xpm usr/share/pixmaps
+share/pixmaps/bobachain128.png usr/share/pixmaps
+debian/bobachain-qt.desktop usr/share/applications
+debian/bobachain-qt.protocol usr/share/kde4/services/

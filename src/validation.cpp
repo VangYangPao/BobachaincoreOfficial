@@ -1231,10 +1231,10 @@ NOTE:   unlike bitcoin we are using PREVIOUS block height here,
 */
 CAmount GetBlockSubsidy(int nPrevBits, int nPrevHeight, const Consensus::Params& consensusParams, bool fSuperblockPartOnly)
 {
-    CAmount nSubsidy = 200 * COIN;
+    CAmount nSubsidy = 20 * COIN;
 
     if (nPrevHeight == 0) {
-        nSubsidy = 4204800 * COIN; //premine
+        nSubsidy = 840000 * COIN; //premine 4% 
     }
 
     // yearly decline of production by 50% per year, projected ~10M coins max by year 2040+.

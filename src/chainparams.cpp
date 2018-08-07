@@ -17,7 +17,7 @@
 #include <boost/assign/list_of.hpp>
 
 #include "chainparamsseeds.h"
-
+#include "arith_uint256.h"
 static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesisOutputScript, uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
     CMutableTransaction txNew;
@@ -52,8 +52,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
  */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward)
 {
-    const char* pszTimestamp = "Bobachain coin";
-    const CScript genesisOutputScript = CScript() << ParseHex("044f1443283e594f9a087e02aeceef6c2cac0d651f65c82cea13b929240a73f380e708f5922225ae4551749a7db28c742758f44877fd4ba527789481f3733d61b1") << OP_CHECKSIG;
+    const char* pszTimestamp = "Bobachain coin";//???
+    const CScript genesisOutputScript = CScript() << ParseHex("04ee66170fcd0e74591d43a26f2f6c2c2c1be62c988c092ee281d5f2546a4ef5fec60d8fdd357202ddc6e7a6808376ad0b36dbb14eecfa353b28bab668517c4b92") << OP_CHECKSIG;
     return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -91,10 +91,10 @@ public:
         consensus.nMajorityRejectBlockOutdated = 950;
         consensus.nMajorityWindow = 1000;
         consensus.BIP34Height = 0;
-        consensus.BIP34Hash = uint256S("0x00000cd6bde619b2c3b23ad2e384328a450a37fa28731debf748c3b17f91f97d");
+        consensus.BIP34Hash = uint256S("0x0000057a11b681b57f29928806f1040b3966876d798d66337c1718a701b212ec");
         consensus.powLimit = uint256S("00000fffff000000000000000000000000000000000000000000000000000000");
-        consensus.nPowTargetTimespan = 2 * 24 * 60 * 60; // Bobachain: 1 day=> 2days // used only for KGW and Bitcoin Diff
-        consensus.nPowTargetSpacing = 2.5 * 60; // Bobachain: 2.5 => 5 minutes // soft change to nPowApr2018TargetSpacing after mPowDGWReconfigureApr2018Height
+        consensus.nPowTargetTimespan = 24 * 60 * 60;//2 * 60;//??? 24 * 60 * 60; // Bobachain: 1 day=> 2days // used only for KGW and Bitcoin Diff
+        consensus.nPowTargetSpacing = 2 * 60; //??? Bobachain: 2 minutes // soft change to nPowApr2018TargetSpacing after mPowDGWReconfigureApr2018Height
         consensus.fPowAllowMinDifficultyBlocks = false;
         consensus.fPowNoRetargeting = false;
         consensus.nPowKGWHeight = 15200; //not used
@@ -102,18 +102,18 @@ public:
         consensus.nRuleChangeActivationThreshold = 1916; // 95% of 2016
         consensus.nMinerConfirmationWindow = 2016; // nPowTargetTimespan / nPowTargetSpacing
         consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1532476800; // January 1, 2008
-        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1532563200; // December 31, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 1199145601; // January 1, 2008
+        consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nTimeout = 1230767999; // December 31, 2008
 
         // Deployment of BIP68, BIP112, and BIP113.
         consensus.vDeployments[Consensus::DEPLOYMENT_CSV].bit = 0;
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1532476800;//1500854400; // Jul 24th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1532563200;// 1532390400; // Jul 24th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nStartTime = 1486252800; // Jul 24th, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_CSV].nTimeout = 1517788800; // Jul 24th, 2018
 
         // Deployment of DIP0001
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].bit = 1;
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1532476800;//1508025600; // Oct 15th, 2017
-        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1532563200;//1539561600; // Oct 15th, 2018
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nStartTime = 1508025600; // Oct 15th, 2017
+        consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nTimeout = 1508025600-1;//1539561600; // Oct 15th, 2018//????
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nWindowSize = 4032;
         consensus.vDeployments[Consensus::DEPLOYMENT_DIP0001].nThreshold = 3226; // 80% of 4032
 
@@ -122,10 +122,10 @@ public:
         consensus.nPowApr2018TargetSpacing = 2 * 60;
 
         // The best chain should have at least this much work.
-        consensus.nMinimumChainWork = uint256S("0x0000000000000000000000000000000000000000000000000047a222baa2d1fe");
+        consensus.nMinimumChainWork = uint256S("0x00");//???uint256S("0x0000000000000000000000000000000000000000000000000047a222baa2d1fe");
 
         // By default assume that the signatures in ancestors of this block are valid.
-        consensus.defaultAssumeValid = uint256S("0x00000000000a106c24554e369cdacdb683fd6daef276ca38b1991ad82e74dc63");
+        consensus.defaultAssumeValid = uint256S("0x00");//???uint256S("0x00000000000a106c24554e369cdacdb683fd6daef276ca38b1991ad82e74dc63");
 
         /**
          * The message start string is designed to be unlikely to occur in normal data.
@@ -136,61 +136,56 @@ public:
         pchMessageStart[1] = 0x0a;//0x0c;
         pchMessageStart[2] = 0xcf;//0x6b;
         pchMessageStart[3] = 0xbe;//0xbd;
-        vAlertPubKey = ParseHex("049ed19af4d90788785368ad3de1ba957e32aea7580d837920358a4ef7605f2fc5dac04cd5dd80893e1d42d9f900c62cb6f3ae01605e88387d1278d5430318d1b6");
-        nDefaultPort = 10311;//10111(10111=>10311);
-        nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
+        vAlertPubKey = ParseHex("044c9639c384d31c65ed4d8a070fd6cc65f1db7be3529d6a5d29303a5408afb68d1f79b0b28e77536dae40ec140bf237305da68d186f326cf6af2eca349aaaa949");
+        nDefaultPort = 26118;
+        nMaxTipAge = 24 * 60 * 60;//??? 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nDelayGetHeadersTime = 24 * 60 * 60;
-        nPruneAfterHeight = 100000;
-
-
+        nPruneAfterHeight = 100000;//????
         
+        genesis = CreateGenesisBlock(1533513600, 202693, 0x1e0ffff0, 1, 20 * COIN);//1533513600 = 2018/8/6
 
+	// myfix for create genesis
+        if (false && genesis.GetHash() != consensus.hashGenesisBlock)
+        {
+            printf("Searching for genesis block...\n");
+            // This will figure out a valid hash and Nonce if you're
+            // creating a different genesis block:
+            arith_uint256 hashTarget = arith_uint256().SetCompact(genesis.nBits);
+            uint256 thash;
+ 
+            while(1)
+            {
 
-        genesis = CreateGenesisBlock(1532390400, 991607, 0x1e0ffff0, 1, 20 * COIN);//1532390400 = 2018/7/24
+                // Generic scrypt
+                thash = genesis.GetHash();
+
+                if (UintToArith256(thash) <= hashTarget)
+                    break;
+                if ((genesis.nNonce & 0xFFF) == 0)
+                {
+                    printf("nonce %08X: hash = %s (target = %s)\n", genesis.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
+                }
+                ++genesis.nNonce;
+                if (genesis.nNonce == 0)
+                {
+                    printf("NONCE WRAPPED, incrementing time\n");
+                    ++genesis.nTime;
+                }
+            }
+            printf("genesis.nTime = %u \n", genesis.nTime);
+            printf("genesis.nNonce = %u \n", genesis.nNonce);
+            printf("genesis.GetHash = 0x%s\n", genesis.GetHash().ToString().c_str());
+            printf("genesis.hashMerkleRoot = 0x%s\n", genesis.hashMerkleRoot.ToString().c_str());
+        } 
+
         consensus.hashGenesisBlock = genesis.GetHash();
-		/*
-		if(genesis.GetHash()!=uint256S("0x0000000000000000000000000000000000000000000000000000000000000000"))
-		{
-		printf("Searchingforgenesisblock...\n");
-		uint256 hashTarget=CBigNum().SetCompact(genesis.nBits).getuint256();
+        assert(consensus.hashGenesisBlock == uint256S("0x0000057a11b681b57f29928806f1040b3966876d798d66337c1718a701b212ec"));
+        assert(genesis.hashMerkleRoot == uint256S("0xe994668368de3f46fa7a52c3564ea62547ea3ed27a401f89daa3d46dd58f01ad"));
 
-
-		printf("hashTarget:%s\n",hashTarget.ToString().c_str());
-
-		while(uint256(genesis.GetHash())>hashTarget)
-		{
-		printf("loop:%s\n",genesis.GetHash().ToString().c_str());
-		++genesis.nNonce;
-		if(genesis.nNonce==0)
-		{
-		printf("NONCEWRAPPED,incrementingtime");
-		std::cout<<std::string("NONCEWRAPPED,incrementingtime:\n");
-		++genesis.nTime;
-		}
-		if(genesis.nNonce%10000==0)
-		{
-		printf("Mainnet:nonce%08u:hash=%s\n",genesis.nNonce,genesis.GetHash().ToString().c_str());
-		}
-		}
-		printf("block.nTime=%u\n",genesis.nTime);
-		printf("block.nNonce=%u\n",genesis.nNonce);
-		printf("block.GetHash=%s\n",genesis.GetHash().ToString().c_str());
-		}
-
-        printf("genesis.GetHash = %s\n", genesis.GetHash().ToString().c_str());
-        printf("merkleroot = %s\n", genesis.hashMerkleRoot.ToString().c_str());
-		*/
-        assert(consensus.hashGenesisBlock == uint256S("0x00000ab218aeec4818089147bfff1da5aca3a076023ffb4a246c7202a9d50d57"));
-        assert(genesis.hashMerkleRoot == uint256S("0x35bf035e860fa7af6b057a906e7d1657edf1ea2034f1fca71473ef683a4c6cd1"));
-
-//        assert(consensus.hashGenesisBlock == uint256S("0x00000cd6bde619b2c3b23ad2e384328a450a37fa28731debf748c3b17f91f97d"));
-//        assert(genesis.hashMerkleRoot == uint256S("0x151883cb75e167308cfe2480d991e4d2c634f74499a5695b61afb3b19f070a5e"));
-
-        vSeeds.push_back(CDNSSeedData("bobachain.io", "144.202.50.171"));// Set current bobachain node(VPS)
-//        vSeeds.push_back(CDNSSeedData("seed2.bobachain.io", "seed2.bobachain.io"));
-//        vSeeds.push_back(CDNSSeedData("seed3.bobachain.io", "seed3.bobachain.io"));
-//        vSeeds.push_back(CDNSSeedData("seed4.bobachain.io", "seed4.bobachain.io"));
-//        vSeeds.push_back(CDNSSeedData("seed5.bobachain.io", "seed5.bobachain.io"));
+        vSeeds.clear();
+//        vSeeds.push_back(CDNSSeedData("boba0", "144.202.50.171"));// Set current bobachain node(VPS)
+//        vSeeds.push_back(CDNSSeedData("boba1", "149.28.120.114"));
+//        vSeeds.push_back(CDNSSeedData("boba2", "149.28.122.121"));
 
         // Bobachain addresses start with 'G'
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,85);//G: 32 => b: 85
@@ -216,14 +211,14 @@ public:
 
         nPoolMaxTransactions = 3;
         nFulfilledRequestExpireTime = 60*60; // fulfilled requests expire in 1 hour
-        strSporkPubKey = "042b48adece7919b622ecbb79b8c54d2f042bd25f4e944debb18b60b749a04727f36c48205c5732b8b0a703aabb1830422ee244bc96c7bdafe86f1c32fcd97c356";
+        strSporkPubKey = "0454e04716570f096793ebbd30a171c102307936d4d983d2731bd9b3f9467c2d6b2d38b1a3777b251d7c41ae3519e33169f6ce9cc8058dc534746f27c8bc1942";
 
         checkpointData = (CCheckpointData) {
             boost::assign::map_list_of
                     (  0, consensus.hashGenesisBlock)
             ,
-            1532390400, // * UNIX timestamp of last checkpoint block
-            28497,    // * total number of transactions between genesis and last checkpoint
+            1533513600, // * UNIX timestamp of last checkpoint block
+            0,    // * total number of transactions between genesis and last checkpoint
             //   (the tx=... number in the SetBestChain debug.log lines)
             5000        // * estimated number of transactions per day after checkpoint
         };
@@ -297,7 +292,7 @@ public:
         pchMessageStart[2] = 0xca;
         pchMessageStart[3] = 0xff;
         vAlertPubKey = ParseHex("044f1443283e594f9a087e02aeceef6c2cac0d651f65c82cea13b929240a73f380e708f5922225ae4551749a7db28c742758f44877fd4ba527789481f3733d61b1");
-        nDefaultPort = 12111;
+        nDefaultPort = 26120;
         nMaxTipAge = 0x7fffffff; // allow mining on top of old blocks for testnet
         nDelayGetHeadersTime = 24 * 60 * 60;
         nPruneAfterHeight = 1000;
@@ -414,7 +409,7 @@ public:
         pchMessageStart[3] = 0xdc;
         nMaxTipAge = 6 * 60 * 60; // ~144 blocks behind -> 2 x fork detection time, was 24 * 60 * 60 in bitcoin
         nDelayGetHeadersTime = 0; // never delay GETHEADERS in regtests
-        nDefaultPort = 20111;//19111(19111=>20111);
+        nDefaultPort = 26122;//19111(19111=>20111);
         nPruneAfterHeight = 1000;
 
         genesis = CreateGenesisBlock(1519336473, 0, 0x207fffff, 1, 20 * COIN);

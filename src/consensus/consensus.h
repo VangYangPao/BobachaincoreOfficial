@@ -19,7 +19,7 @@ inline unsigned int MaxBlockSigOps(bool fDIP0001Active /*= false */)
     return MaxBlockSize(fDIP0001Active) / 50;
 }
 /** Coinbase transaction outputs can only be spent after this number of new blocks (network rule) */
-static const int COINBASE_MATURITY = 20;//100
+static const int COINBASE_MATURITY = 20;  
 
 /** Flags for nSequence and nLockTime locks */
 enum {
@@ -30,6 +30,7 @@ enum {
     LOCKTIME_MEDIAN_TIME_PAST = (1 << 1),
 };
 
-static const int LYRA2Z_TIMESTAMP = 1535587200; //7 May 2018 @ midnight UTC
+static const int LYRA2Z_TIMESTAMP = 1525651200; //7 May 2018 @ midnight UTC
+static const int LYRA2Z_BLOCK = 150; 
 
 #endif // BITCOIN_CONSENSUS_CONSENSUS_H

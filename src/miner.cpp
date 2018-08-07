@@ -431,7 +431,6 @@ void static BitcoinMiner(const CChainParams& chainparams, CConnman& connman)
                 } while (true);
             }
 
-
             //
             // Create new block
             //

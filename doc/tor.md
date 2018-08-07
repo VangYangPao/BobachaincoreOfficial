@@ -52,11 +52,11 @@ reachable from the Tor network. Add these lines to your /etc/tor/torrc (or equiv
 config file):
 
 	HiddenServiceDir /var/lib/tor/bobachaincore-service/
-	HiddenServicePort 10111 127.0.0.1:10111
+	HiddenServicePort 26118 127.0.0.1:26118
 	HiddenServicePort 12111 127.0.0.1:12111
 
 The directory can be different of course, but (both) port numbers should be equal to
-your bobachaind's P2P listen port (10111 by default).
+your bobachaind's P2P listen port (26118 by default).
 
 	-externalip=X   You can tell Bobachain Core about its publicly reachable address using
 	                this option, and this can be a .onion address. Given the above
@@ -91,7 +91,7 @@ as well, use `discover` instead:
 
 	./bobachaind ... -discover
 
-and open port 10111 on your firewall (or use -upnp).
+and open port 26118 on your firewall (or use -upnp).
 
 If you only want to use Tor to reach onion addresses, but not use it as a proxy
 for normal IPv4/IPv6 communication, use:
